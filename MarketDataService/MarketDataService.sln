@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36915.13 d17.14
+VisualStudioVersion = 17.14.36915.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataService.API", "MarketDataService.API\MarketDataService.API.csproj", "{4E80D755-36A5-4027-B67F-81C93E0874B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataService.Domain", "MarketDataService.Domain\MarketDataService.Domain.csproj", "{43268886-0EF1-457A-A7F8-C905185FA904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataService.Infrastructure", "MarketDataService.Infrastructure\MarketDataService.Infrastructure.csproj", "{3660369E-0973-4CBC-AA65-7F7B3254337D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataService.Application", "MarketDataService.Application\MarketDataService.Application.csproj", "{28500E3B-707B-4832-96BC-E778E04DDD11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{4E80D755-36A5-4027-B67F-81C93E0874B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E80D755-36A5-4027-B67F-81C93E0874B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E80D755-36A5-4027-B67F-81C93E0874B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43268886-0EF1-457A-A7F8-C905185FA904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43268886-0EF1-457A-A7F8-C905185FA904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43268886-0EF1-457A-A7F8-C905185FA904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43268886-0EF1-457A-A7F8-C905185FA904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3660369E-0973-4CBC-AA65-7F7B3254337D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3660369E-0973-4CBC-AA65-7F7B3254337D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3660369E-0973-4CBC-AA65-7F7B3254337D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3660369E-0973-4CBC-AA65-7F7B3254337D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28500E3B-707B-4832-96BC-E778E04DDD11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28500E3B-707B-4832-96BC-E778E04DDD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28500E3B-707B-4832-96BC-E778E04DDD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28500E3B-707B-4832-96BC-E778E04DDD11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
