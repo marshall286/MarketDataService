@@ -1,4 +1,4 @@
-﻿namespace MarketDataService.Application.Configuration;
+﻿namespace MarketDataService.Infrastructure.Configuration;
 
 public class FintachartsSettings
 {
