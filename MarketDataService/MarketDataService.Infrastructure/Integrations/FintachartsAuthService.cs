@@ -9,7 +9,7 @@ namespace MarketDataService.Infrastructure.Services;
 public class FintachartsAuthService
 {
     private readonly HttpClient _httpClient;
-    private readonly FintachartsSettings _options;
+    private readonly FintachartsSettings _settings;
     private readonly IMemoryCache _cache;
 
     private const string TokenCacheKey = "FintaToken";
@@ -20,7 +20,7 @@ public class FintachartsAuthService
         IMemoryCache cache)
     {
         _httpClient = httpClient;
-        _options = options.Value;
+        _settings = options.Value;
         _cache = cache;
     }
 
@@ -35,11 +35,11 @@ public class FintachartsAuthService
         {
             { "grant_type", "password" }, 
             { "client_id", "app-cli" },
-            { "username", _options.Username },
-            { "password", _options.Password } 
+            { "username", _settings.Username },
+            { "password", _settings.Password } 
         };
 
-        var authUrl = $"{_options.BaseUrl}/identity/realms/fintatech/protocol/openid-connect/token";
+        var authUrl = $"{_settings.BaseUrl}/identity/realms/fintatech/protocol/openid-connect/token";
 
         var request = new HttpRequestMessage(HttpMethod.Post, authUrl)
         { 

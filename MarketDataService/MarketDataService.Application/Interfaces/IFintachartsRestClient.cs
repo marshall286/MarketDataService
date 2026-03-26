@@ -1,10 +1,11 @@
-﻿using MarketDataService.Domain.Entities;
+﻿using MarketDataService.Application.DTOs;
+using MarketDataService.Domain.Entities;
 
 namespace MarketDataService.Application.Interfaces
 {
     public interface IFintachartsRestClient
     {
-        Task<Asset> GetForexAssetsAsync();
-        Task<(decimal Price, DateTime LastUpdate)?> GetLastHistoricalPriceAsync(Guid instrumentId, string provider, CancellationToken cancellationToken);
+        Task<IEnumerable<Asset>> GetForexAssetsAsync(string provider, CancellationToken cancellationToken);
+        Task<HistoricalPriceResponse?> GetLastHistoricalPriceAsync(HistoricalPriceRequest request, CancellationToken cancellationToken);
     }
 }

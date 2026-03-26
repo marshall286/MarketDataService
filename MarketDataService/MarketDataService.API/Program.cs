@@ -1,5 +1,7 @@
+using MarketDataService.Application.Interfaces;
 using MarketDataService.Infrastructure.Configuration;
 using MarketDataService.Infrastructure.Data;
+using MarketDataService.Infrastructure.Integrations;
 using MarketDataService.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +13,7 @@ builder.Services.AddHttpClient<FintachartsAuthService>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+builder.Services.AddScoped<IFintachartsRestClient, FintachartsRestClient>();
 builder.Services.AddControllers();
 builder.Services.AddMemoryCache();
 builder.Services.AddSwaggerGen();
