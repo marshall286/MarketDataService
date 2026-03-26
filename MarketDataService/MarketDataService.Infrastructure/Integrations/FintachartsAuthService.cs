@@ -54,7 +54,7 @@ public class FintachartsAuthService
 
         if (tokenResponse == null ||  string.IsNullOrEmpty(tokenResponse.AccessToken))
         {
-            throw new NullReferenceException("The Token is null!");
+            throw new InvalidOperationException("The Token is null!");
         }
 
         var cacheOptions = new MemoryCacheEntryOptions()

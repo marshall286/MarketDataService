@@ -5,7 +5,8 @@ namespace MarketDataService.Application.Interfaces
 {
     public interface IFintachartsRestClient
     {
-        Task<IEnumerable<Asset>> GetForexAssetsAsync(string provider, CancellationToken cancellationToken);
+        Task<IEnumerable<Asset>> GetAssetsAsync(string provider, CancellationToken cancellationToken);
+        Task<IEnumerable<string>> GetProvidersAsync(CancellationToken cancellationToken);
         Task<HistoricalPriceResponse?> GetLastHistoricalPriceAsync(HistoricalPriceRequest request, CancellationToken cancellationToken);
     }
 }
