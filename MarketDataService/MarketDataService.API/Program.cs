@@ -1,4 +1,5 @@
 using MarketDataService.Application.Interfaces;
+using MarketDataService.Application.Services;
 using MarketDataService.Infrastructure.Configuration;
 using MarketDataService.Infrastructure.Data;
 using MarketDataService.Infrastructure.Integrations;
@@ -11,7 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<FintachartsSettings>(
     builder.Configuration.GetSection("FintachartsApi"));
 builder.Services.AddHttpClient<FintachartsAuthService>();
-builder.Services.AddHttpClient<FintachartsRestClient>();
+builder.Services.AddHttpClient<IFintachartsRestClient, FintachartsRestClient>();
+builder.Services.AddScoped<IAssetRepository, AssetRepository>();
+builder.Services.AddScoped<ICacheProvider, CacheProvider> ();
+builder.Services.AddScoped<IAssetService, AssetService> ();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -38,6 +42,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapControllers();
 app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 
 app.Run();

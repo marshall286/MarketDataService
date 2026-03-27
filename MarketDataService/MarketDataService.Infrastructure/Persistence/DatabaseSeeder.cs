@@ -2,7 +2,6 @@
 using MarketDataService.Domain.Entities;
 using MarketDataService.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace MarketDataService.Infrastructure.Persistence;
 

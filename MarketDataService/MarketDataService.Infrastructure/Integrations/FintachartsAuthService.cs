@@ -1,6 +1,6 @@
-﻿using MarketDataService.Infrastructure.Configuration;
+﻿using MarketDataService.Application.Interfaces;
+using MarketDataService.Infrastructure.Configuration;
 using MarketDataService.Infrastructure.Models;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using System.Net.Http.Json;
 
@@ -10,14 +10,11 @@ public class FintachartsAuthService
 {
     private readonly HttpClient _httpClient;
     private readonly FintachartsSettings _settings;
-    private readonly IMemoryCache _cache;
+    private readonly ICacheProvider _cache;
 
     private const string TokenCacheKey = "FintaToken";
 
-    public FintachartsAuthService(
-        HttpClient httpClient,
-        IOptions<FintachartsSettings> options,
-        IMemoryCache cache)
+    public FintachartsAuthService( HttpClient httpClient, IOptions<FintachartsSettings> options, ICacheProvider cache)
     {
         _httpClient = httpClient;
         _settings = options.Value;
@@ -57,10 +54,9 @@ public class FintachartsAuthService
             throw new InvalidOperationException("The Token is null!");
         }
 
-        var cacheOptions = new MemoryCacheEntryOptions()
-            .SetAbsoluteExpiration(TimeSpan.FromSeconds(tokenResponse.ExpiresIn - 30));
+        var expiration = TimeSpan.FromSeconds(tokenResponse.ExpiresIn - 30);
 
-         _cache.Set(TokenCacheKey, tokenResponse.AccessToken, cacheOptions);
+        _cache.Set(TokenCacheKey, tokenResponse.AccessToken, expiration);
 
         return tokenResponse.AccessToken;
     }
