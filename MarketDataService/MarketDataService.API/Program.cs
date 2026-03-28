@@ -14,8 +14,10 @@ builder.Services.Configure<FintachartsSettings>(
 builder.Services.AddHttpClient<FintachartsAuthService>();
 builder.Services.AddHttpClient<IFintachartsRestClient, FintachartsRestClient>();
 builder.Services.AddScoped<IAssetRepository, AssetRepository>();
-builder.Services.AddScoped<ICacheProvider, CacheProvider> ();
+builder.Services.AddSingleton<ICacheProvider, CacheProvider> ();
 builder.Services.AddScoped<IAssetService, AssetService> ();
+builder.Services.AddHostedService<FintachartsWebSocketService>();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

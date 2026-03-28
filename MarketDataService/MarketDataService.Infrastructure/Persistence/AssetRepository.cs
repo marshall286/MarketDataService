@@ -14,6 +14,13 @@ public class AssetRepository : IAssetRepository
         _context = context;
     }
 
+    public async Task<IEnumerable<Asset>> GetAllAssetsAsync(CancellationToken cancellationToken)
+    {
+        return await _context.Assets
+            .AsNoTracking()
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<IEnumerable<Asset>> GetAssetsByProviderAsync(string provider, CancellationToken cancellationToken)
     {
         return await _context.Assets
