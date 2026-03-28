@@ -1,3 +1,4 @@
+using MarketDataService.API.Extensions;
 using MarketDataService.Application.Interfaces;
 using MarketDataService.Application.Services;
 using MarketDataService.Infrastructure.Configuration;
@@ -29,14 +30,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
-
-    var cancellationToken = app.Lifetime.ApplicationStopping;
-
-    await seeder.SeedAsync(cancellationToken);
-}
+await app.InitializeDatabaseAsync();
 
 if (app.Environment.IsDevelopment())
 {

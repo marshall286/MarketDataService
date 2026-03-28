@@ -1,6 +1,5 @@
 ﻿using MarketDataService.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 
 namespace MarketDataService.Controllers;
 

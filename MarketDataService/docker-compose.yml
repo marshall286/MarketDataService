@@ -7,6 +7,7 @@ services:
       dockerfile: MarketDataService.API/Dockerfile
     environment:
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=MarketDataDb;Username=postgres;Password=postgres
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8080:8080" 
     depends_on:
@@ -20,3 +21,8 @@ services:
       POSTGRES_DB: MarketDataDb
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

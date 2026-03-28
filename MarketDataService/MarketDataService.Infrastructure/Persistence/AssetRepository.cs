@@ -29,10 +29,10 @@ public class AssetRepository : IAssetRepository
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<Asset?> GetBySymbolAndProviderAsync(string symbol, string provider, CancellationToken ct = default)
+    public async Task<Asset?> GetBySymbolAndProviderAsync(string symbol, string provider, CancellationToken cancellationToken)
     {
         return await _context.Assets
             .AsNoTracking()
-            .FirstOrDefaultAsync(a => a.Symbol == symbol && a.Providers.Contains(provider), ct);
+            .FirstOrDefaultAsync(a => a.Symbol == symbol && a.Providers.Contains(provider), cancellationToken);
     }
 }
