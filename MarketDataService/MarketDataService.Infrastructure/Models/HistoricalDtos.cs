@@ -1,0 +1,7 @@
+﻿using System.Text.Json.Serialization;
+
+namespace MarketDataService.Infrastructure.Models;
+
+public record HistoricalBarDto(
+    [property: JsonPropertyName("t")] DateTime Time,
+    [property: JsonPropertyName("c")] decimal ClosePrice);
